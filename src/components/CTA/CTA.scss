@@ -1,0 +1,77 @@
+@use "../../styles/variables" as v;
+
+.cta {
+  background: v.$brand-primary-500;
+  color: v.$neutral-0;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: v.$spacing-6;
+    max-width: 800px;
+  }
+
+  &__title {
+    font-size: v.$font-size-4xl;
+    font-weight: v.$font-weight-bold;
+    line-height: v.$line-height-tight;
+
+    @media (max-width: v.$breakpoint-sm) {
+      font-size: v.$font-size-2xl;
+    }
+  }
+
+  &__description {
+    font-size: v.$font-size-lg;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: v.$line-height-relaxed;
+    max-width: 600px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: v.$spacing-4;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: v.$spacing-4;
+  }
+
+  &__button {
+    padding: v.$spacing-4 v.$spacing-8;
+    border-radius: v.$radius-button;
+    font-size: v.$font-size-base;
+    font-weight: v.$font-weight-bold;
+    font-family: v.$font-family-base;
+    cursor: pointer;
+    transition: v.$transition-button;
+
+    &--primary {
+      background: v.$neutral-0;
+      color: v.$brand-primary-500;
+      border: none;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.9);
+        transform: translateY(-2px);
+        box-shadow: v.$shadow-md;
+      }
+    }
+
+    &--secondary {
+      background: transparent;
+      color: v.$neutral-0;
+      border: 2px solid v.$neutral-0;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+      }
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}

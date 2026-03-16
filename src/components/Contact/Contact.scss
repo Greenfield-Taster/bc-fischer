@@ -1,0 +1,202 @@
+@use "../../styles/variables" as v;
+
+.contact {
+  background: v.$neutral-0;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: v.$spacing-16;
+
+    @media (max-width: v.$breakpoint-lg) {
+      grid-template-columns: 1fr;
+      gap: v.$spacing-10;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: v.$spacing-8;
+  }
+
+  &__title {
+    font-size: v.$font-size-5xl;
+    font-weight: v.$font-weight-extrabold;
+    color: v.$color-text-primary;
+    letter-spacing: v.$letter-spacing-tight;
+    line-height: v.$line-height-tight;
+
+    @media (max-width: v.$breakpoint-sm) {
+      font-size: v.$font-size-3xl;
+    }
+  }
+
+  &__subtitle {
+    font-size: v.$font-size-lg;
+    color: v.$color-text-secondary;
+    line-height: v.$line-height-relaxed;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: v.$spacing-1;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: v.$spacing-4;
+    padding: v.$spacing-5 0;
+    border-top: 1px solid v.$color-border;
+
+    &:last-child {
+      border-bottom: 1px solid v.$color-border;
+    }
+  }
+
+  &__item-icon {
+    color: v.$brand-primary-500;
+    flex-shrink: 0;
+  }
+
+  &__item-value {
+    font-size: v.$font-size-lg;
+    font-weight: v.$font-weight-semibold;
+    color: v.$color-text-primary;
+  }
+
+  &__socials {
+    display: flex;
+    gap: v.$spacing-3;
+  }
+
+  &__social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: v.$radius-full;
+    background: v.$neutral-100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: v.$color-text-secondary;
+    transition: v.$transition-button;
+    text-decoration: none;
+
+    &:hover {
+      background: v.$brand-primary-500;
+      color: v.$neutral-0;
+    }
+  }
+
+  &__form-wrapper {
+    background: v.$neutral-0;
+    padding: v.$spacing-10;
+    border-radius: v.$radius-xl;
+    border: 1px solid v.$color-border;
+    box-shadow: v.$shadow-lg;
+
+    @media (max-width: v.$breakpoint-sm) {
+      padding: v.$spacing-6;
+    }
+  }
+
+  &__form-title {
+    font-size: v.$font-size-2xl;
+    font-weight: v.$font-weight-bold;
+    color: v.$color-text-primary;
+    margin-bottom: v.$spacing-8;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: v.$spacing-5;
+  }
+
+  &__form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: v.$spacing-5;
+
+    @media (max-width: v.$breakpoint-sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: v.$spacing-2;
+  }
+
+  &__field-label {
+    font-size: v.$font-size-sm;
+    font-weight: v.$font-weight-bold;
+    color: v.$color-text-primary;
+  }
+
+  &__input {
+    width: 100%;
+    height: 52px;
+    padding: 0 v.$spacing-4;
+    border: 1px solid v.$color-border-dark;
+    border-radius: v.$radius-input;
+    background: v.$neutral-50;
+    font-size: v.$font-size-base;
+    color: v.$color-text-primary;
+    font-family: v.$font-family-base;
+    transition: v.$transition-button;
+
+    &:focus {
+      outline: none;
+      border-color: v.$brand-primary-500;
+      box-shadow: 0 0 0 3px rgba(v.$brand-primary-500, 0.15);
+    }
+  }
+
+  &__select {
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: v.$spacing-10;
+  }
+
+  &__textarea {
+    height: auto;
+    padding: v.$spacing-4;
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  &__submit {
+    height: 52px;
+    background: v.$brand-primary-500;
+    color: v.$neutral-0;
+    border: none;
+    border-radius: v.$radius-button;
+    font-size: v.$font-size-lg;
+    font-weight: v.$font-weight-bold;
+    font-family: v.$font-family-base;
+    cursor: pointer;
+    transition: v.$transition-button;
+    box-shadow: 0 4px 12px rgba(v.$brand-primary-500, 0.2);
+
+    &:hover {
+      background: v.$brand-primary-600;
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}

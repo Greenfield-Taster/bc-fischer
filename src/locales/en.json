@@ -1,0 +1,101 @@
+{
+  "nav": {
+    "about": "About",
+    "features": "Services",
+    "portfolio": "Projects",
+    "partners": "Partners",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "BC Fisher",
+    "subtitle": "Your reliable construction partner. Professional approach and engineering excellence in every project.",
+    "cta": "Our services"
+  },
+  "about": {
+    "title": "About company",
+    "heading": "Investment & Construction Company",
+    "description": "BC Fisher is a team of professionals providing a full cycle of investment and construction works. We combine years of experience with innovative approaches to implement projects of any complexity.",
+    "description2": "Our goal is to create facilities that meet the highest standards of quality and safety, ensuring sustainable infrastructure development and a comfortable environment for living and business.",
+    "stats": [
+      { "value": "50+", "label": "Completed projects" },
+      { "value": "15+", "label": "Years of experience" },
+      { "value": "200+", "label": "Team members" }
+    ]
+  },
+  "features": {
+    "title": "Types of work",
+    "subtitle": "Professional solutions in construction and engineering. We provide a full cycle of works from foundation to complex transport systems.",
+    "categories": [
+      {
+        "title": "Construction & Installation",
+        "description": "Comprehensive construction services for industrial and civil facilities.",
+        "items": ["Foundations", "Metal structures", "Concrete works", "Roofing", "Brickwork"]
+      },
+      {
+        "title": "Engineering Networks",
+        "description": "Design and implementation of internal and external life support systems.",
+        "items": ["Water supply", "HVAC", "Power supply", "External networks"]
+      },
+      {
+        "title": "Transport Structures",
+        "description": "Specialized solutions for vertical and horizontal movement.",
+        "items": ["Elevators", "Escalators", "Conveyors", "Lifting systems"]
+      }
+    ],
+    "items": [
+      { "icon": "foundation", "title": "General construction", "description": "Full range of works from foundation to roof." },
+      { "icon": "park", "title": "Landscaping", "description": "Greening and landscape design of facilities." },
+      { "icon": "road", "title": "Road works", "description": "Repair and construction of road surfaces." },
+      { "icon": "water_drop", "title": "Water supply", "description": "Installation of internal and external networks." },
+      { "icon": "bolt", "title": "Electrical works", "description": "Design and installation of power supply systems." },
+      { "icon": "roofing", "title": "Roofing works", "description": "Roofing of any complexity." },
+      { "icon": "hvac", "title": "HVAC", "description": "Creating comfortable climate in premises." },
+      { "icon": "apartment", "title": "Facade works", "description": "Insulation and decoration of building facades." },
+      { "icon": "architecture", "title": "Design", "description": "Development of architectural and engineering solutions." },
+      { "icon": "engineering", "title": "Technical supervision", "description": "Quality and schedule control." },
+      { "icon": "inventory", "title": "Material logistics", "description": "Timely delivery of construction materials." },
+      { "icon": "construction", "title": "Demolition works", "description": "Safe demolition of structures of any complexity." }
+    ]
+  },
+  "portfolio": {
+    "title": "Completed projects",
+    "subtitle": "Over 50 projects completed in recent years",
+    "items": [
+      { "title": "Pechersk Plaza RC", "category": "Residential", "location": "Kyiv, Pechersk district" },
+      { "title": "Vozdvizhenka RC", "category": "Residential", "location": "Kyiv, Podil" },
+      { "title": "STB TV Headquarter", "category": "Commercial", "location": "Media center & studios" },
+      { "title": "Business Center Alpha", "category": "Commercial", "location": "Kyiv, City center" },
+      { "title": "Modern Warehouse", "category": "Industrial", "location": "Logistics hub, Class A" },
+      { "title": "Luxury Villa Pine", "category": "Residential", "location": "Private project, Kozyn" }
+    ]
+  },
+  "partners": {
+    "title": "Our partners"
+  },
+  "cta": {
+    "title": "Ready to start a project?",
+    "description": "Our experts are ready to provide a detailed consultation on any type of work and calculate a preliminary estimate.",
+    "button": "Get a consultation",
+    "buttonSecondary": "Contact us"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Have a project or question? Our team of professionals is ready to help you implement your ideas.",
+    "email": "info@bcfisher.ua",
+    "phone": "+38 (044) 123-45-67",
+    "address": "Kyiv, Khreshchatyk St., 1",
+    "formTitle": "Send a request",
+    "formName": "Your name",
+    "formPhone": "Phone",
+    "formSubject": "Subject",
+    "formMessage": "Message",
+    "formSubmit": "Send request",
+    "subjects": ["Residential construction", "Commercial facilities", "Industrial facilities", "Other"]
+  },
+  "footer": {
+    "description": "Professional construction and architectural design since 2010.",
+    "navigation": "Navigation",
+    "contacts": "Contacts",
+    "rights": "All rights reserved"
+  }
+}

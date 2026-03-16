@@ -1,0 +1,45 @@
+@use "reset";
+@use "variables" as v;
+
+body {
+  font-family: v.$font-family-base;
+  font-size: v.$font-size-base;
+  font-weight: v.$font-weight-regular;
+  line-height: v.$line-height-normal;
+  color: v.$color-text-primary;
+  background-color: v.$color-background;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  width: 100%;
+  max-width: v.$container-max-width;
+  margin: 0 auto;
+  padding: 0 v.$spacing-6;
+
+  @media (max-width: v.$breakpoint-sm) {
+    padding: 0 v.$spacing-4;
+  }
+}
+
+section {
+  padding: v.$spacing-section 0;
+  position: relative;
+  scroll-margin-top: 80px;
+
+  @media (max-width: v.$breakpoint-md) {
+    scroll-margin-top: 64px;
+    padding: v.$spacing-16 0;
+  }
+
+  @media (max-width: v.$breakpoint-sm) {
+    padding: v.$spacing-12 0;
+  }
+}
+
+::selection {
+  background: rgba(v.$brand-primary-500, 0.15);
+  color: v.$brand-primary-700;
+}
