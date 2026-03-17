@@ -1,4 +1,5 @@
-import { Mail, Phone, MapPin } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { Mail, Phone, MapPin, ChevronDown } from "lucide-react";
 import AnimatedSection from "../AnimatedSection/AnimatedSection";
 import { useLanguage } from "../../contexts/language/useLanguage";
 import { SOCIAL_LINKS, ICON_MAP } from "../../data/siteData";
@@ -10,8 +11,58 @@ const CONTACT_ITEMS = [
   { icon: MapPin, labelKey: "contact.address", type: "address" },
 ];
 
+const CustomSelect = ({ options, label }) => {
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState(options?.[0] || "");
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    if (options?.length && !selected) setSelected(options[0]);
+  }, [options, selected]);
+
+  return (
+    <div className="contact__field" ref={ref}>
+      <span className="contact__field-label">{label}</span>
+      <button
+        type="button"
+        className={`contact__input contact__custom-select${open ? " contact__custom-select--open" : ""}`}
+        onClick={() => setOpen((prev) => !prev)}
+      >
+        <span className="contact__custom-select-value">{selected}</span>
+        <ChevronDown size={18} className={`contact__custom-select-icon${open ? " contact__custom-select-icon--open" : ""}`} />
+      </button>
+      {open && (
+        <div className="contact__dropdown">
+          {options.map((option) => (
+            <button
+              key={option}
+              type="button"
+              className={`contact__dropdown-item${option === selected ? " contact__dropdown-item--active" : ""}`}
+              onClick={() => {
+                setSelected(option);
+                setOpen(false);
+              }}
+            >
+              {option}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const Contact = () => {
   const { t } = useLanguage();
+  const subjects = t("contact.subjects");
 
   return (
     <section id="contact" className="contact">
@@ -80,15 +131,12 @@ const Contact = () => {
                   />
                 </label>
               </div>
-              <label className="contact__field">
-                <span className="contact__field-label">{t("contact.formSubject")}</span>
-                <select className="contact__input contact__select">
-                  {Array.isArray(t("contact.subjects")) &&
-                    t("contact.subjects").map((subject) => (
-                      <option key={subject}>{subject}</option>
-                    ))}
-                </select>
-              </label>
+              {Array.isArray(subjects) && (
+                <CustomSelect
+                  options={subjects}
+                  label={t("contact.formSubject")}
+                />
+              )}
               <label className="contact__field">
                 <span className="contact__field-label">{t("contact.formMessage")}</span>
                 <textarea

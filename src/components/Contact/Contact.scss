@@ -185,6 +185,7 @@
     display: flex;
     flex-direction: column;
     gap: v.$spacing-2;
+    position: relative;
   }
 
   &__field-label {
@@ -213,13 +214,72 @@
     }
   }
 
-  &__select {
-    appearance: none;
+  // ─── Custom select ───
+  &__custom-select {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     cursor: pointer;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 16px center;
-    padding-right: v.$spacing-10;
+    text-align: left;
+
+    &--open {
+      border-color: v.$brand-primary-500;
+      box-shadow: 0 0 0 3px rgba(v.$brand-primary-500, 0.12);
+      background: v.$neutral-0;
+    }
+  }
+
+  &__custom-select-value {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__custom-select-icon {
+    flex-shrink: 0;
+    color: v.$color-text-secondary;
+    transition: transform v.$transition-fast v.$transition-timing;
+
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 4px);
+    background: v.$neutral-0;
+    border: 1px solid rgba(v.$brand-primary-500, 0.15);
+    border-radius: v.$radius-input;
+    box-shadow: v.$shadow-dropdown;
+    z-index: v.$z-dropdown;
+    overflow: hidden;
+  }
+
+  &__dropdown-item {
+    width: 100%;
+    text-align: left;
+    padding: v.$spacing-3 v.$spacing-4;
+    font-size: v.$font-size-base;
+    font-family: v.$font-family-base;
+    color: v.$color-text-primary;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all v.$transition-fast v.$transition-timing;
+
+    &:hover {
+      background: rgba(v.$brand-primary-500, 0.06);
+      color: v.$brand-primary-500;
+    }
+
+    &--active {
+      background: rgba(v.$brand-primary-500, 0.08);
+      color: v.$brand-primary-500;
+      font-weight: v.$font-weight-semibold;
+    }
   }
 
   &__textarea {
