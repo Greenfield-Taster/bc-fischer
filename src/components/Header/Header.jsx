@@ -95,9 +95,6 @@ const Header = () => {
             </button>
           ))}
         </nav>
-        <div className="header__mobile-actions">
-          <LanguageSwitcher />
-        </div>
       </div>
     </header>
   );
