@@ -35,6 +35,7 @@ const Portfolio = () => {
   const items = t("portfolio.items");
   const [expanded, setExpanded] = useState(false);
   const gridRef = useRef(null);
+  const toggleRef = useRef(null);
   const gridInView = useInView(gridRef, { once: true, margin: "-80px" });
 
   const visibleItems = Array.isArray(items)
@@ -99,9 +100,21 @@ const Portfolio = () => {
         {hasMore && (
           <AnimatedSection className="portfolio__toggle-wrapper">
             <button
+              ref={toggleRef}
               className="portfolio__toggle"
               type="button"
-              onClick={() => setExpanded((prev) => !prev)}
+              onClick={() => {
+                if (expanded && toggleRef.current) {
+                  const btnTop = toggleRef.current.getBoundingClientRect().top;
+                  setExpanded(false);
+                  requestAnimationFrame(() => {
+                    const newBtnTop = toggleRef.current.getBoundingClientRect().top;
+                    window.scrollBy({ top: newBtnTop - btnTop, behavior: "instant" });
+                  });
+                  return;
+                }
+                setExpanded(true);
+              }}
             >
               {expanded ? (
                 <>
