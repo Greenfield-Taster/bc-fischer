@@ -1,7 +1,25 @@
 @use "../../styles/variables" as v;
 
 .portfolio {
+  position: relative;
+  overflow: hidden;
+  padding: v.$spacing-24 0;
+
+  // ─── Blueprint grid background ───
+  &__grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(v.$brand-primary-500, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(v.$brand-primary-500, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 70% 60% at 30% 80%, black 0%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 30% 80%, black 0%, transparent 100%);
+  }
+
   &__container {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     gap: v.$spacing-12;
@@ -13,15 +31,18 @@
     gap: v.$spacing-3;
   }
 
-  &__title {
-    font-size: v.$font-size-4xl;
+  &__label {
+    display: inline-block;
+    font-size: v.$font-size-sm;
     font-weight: v.$font-weight-bold;
-    color: v.$color-text-primary;
-    letter-spacing: v.$letter-spacing-tight;
-
-    @media (max-width: v.$breakpoint-sm) {
-      font-size: v.$font-size-3xl;
-    }
+    color: v.$brand-primary-500;
+    text-transform: uppercase;
+    letter-spacing: v.$letter-spacing-wider;
+    padding: v.$spacing-2 v.$spacing-4;
+    background: rgba(v.$brand-primary-500, 0.08);
+    border-radius: v.$radius-full;
+    width: fit-content;
+    margin-bottom: v.$spacing-1;
   }
 
   &__subtitle {
@@ -51,6 +72,8 @@
     overflow: hidden;
     border-radius: v.$radius-xl;
     cursor: pointer;
+    border: 1px solid rgba(v.$brand-primary-500, 0.12);
+    box-shadow: v.$shadow-sm;
 
     &--featured {
       grid-column: span 2;
@@ -68,6 +91,27 @@
 
     &:hover .portfolio__overlay {
       opacity: 1;
+    }
+
+    // Blueprint corner accent
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 24px;
+      height: 24px;
+      border-top: 2px solid rgba(v.$brand-primary-500, 0.3);
+      border-left: 2px solid rgba(v.$brand-primary-500, 0.3);
+      border-radius: v.$radius-xl 0 0 0;
+      z-index: 3;
+      transition: all v.$transition-base v.$transition-timing;
+    }
+
+    &:hover::before {
+      width: 32px;
+      height: 32px;
+      border-color: v.$brand-primary-500;
     }
   }
 
@@ -89,7 +133,7 @@
     background: linear-gradient(
       180deg,
       transparent 40%,
-      rgba(0, 0, 0, 0.7) 100%
+      rgba(v.$brand-primary-900, 0.75) 100%
     );
     opacity: 0;
     transition: opacity v.$transition-slow v.$transition-timing;
@@ -100,7 +144,7 @@
     top: v.$spacing-4;
     left: v.$spacing-4;
     padding: v.$spacing-1 v.$spacing-3;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(8px);
     border-radius: v.$radius-base;
     font-size: 10px;
@@ -108,6 +152,7 @@
     text-transform: uppercase;
     letter-spacing: v.$letter-spacing-wider;
     color: v.$brand-primary-500;
+    border: 1px solid rgba(v.$brand-primary-500, 0.1);
   }
 
   &__item-title {
