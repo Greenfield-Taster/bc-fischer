@@ -8,6 +8,9 @@ import "./Portfolio.scss";
 
 const INITIAL_COUNT = 6;
 
+// Indices of featured (2x2) items within each "page"
+const FEATURED_INDICES = [0, 7, 11];
+
 const cardVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: (i) => ({
@@ -57,14 +60,13 @@ const Portfolio = () => {
           <AnimatePresence mode="popLayout">
             {visibleItems.map((item, index) => {
               const globalIndex = Array.isArray(items) ? items.indexOf(item) : index;
-              const hasImage = globalIndex < PORTFOLIO_IMAGES.length;
+              const imageIndex = globalIndex % PORTFOLIO_IMAGES.length;
+              const isFeatured = FEATURED_INDICES.includes(globalIndex);
 
               return (
                 <motion.div
                   key={`${item.title}-${item.location}`}
-                  className={`portfolio__item${
-                    index === 0 ? " portfolio__item--featured" : ""
-                  }${!hasImage ? " portfolio__item--text" : ""}`}
+                  className={`portfolio__item${isFeatured ? " portfolio__item--featured" : ""}`}
                   custom={index}
                   variants={cardVariants}
                   initial="hidden"
@@ -72,36 +74,20 @@ const Portfolio = () => {
                   exit="exit"
                   layout
                 >
-                  {hasImage ? (
-                    <>
-                      <img
-                        className="portfolio__image"
-                        src={PORTFOLIO_IMAGES[globalIndex]}
-                        alt={item.title}
-                        loading="lazy"
-                      />
-                      <div className="portfolio__overlay">
-                        <span className="portfolio__badge">{item.category}</span>
-                        <h3 className="portfolio__item-title">{item.title}</h3>
-                        <span className="portfolio__item-location">
-                          <MapPin size={14} />
-                          {item.location}
-                        </span>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <span className="portfolio__badge">{item.category}</span>
-                      <div className="portfolio__text-content">
-                        <h3 className="portfolio__item-title">{item.title}</h3>
-                        <p className="portfolio__item-description">{item.description}</p>
-                        <span className="portfolio__item-location">
-                          <MapPin size={14} />
-                          {item.location}
-                        </span>
-                      </div>
-                    </>
-                  )}
+                  <img
+                    className="portfolio__image"
+                    src={PORTFOLIO_IMAGES[imageIndex]}
+                    alt={item.title}
+                    loading="lazy"
+                  />
+                  <div className="portfolio__overlay">
+                    <span className="portfolio__badge">{item.category}</span>
+                    <h3 className="portfolio__item-title">{item.title}</h3>
+                    <span className="portfolio__item-location">
+                      <MapPin size={14} />
+                      {item.location}
+                    </span>
+                  </div>
                 </motion.div>
               );
             })}

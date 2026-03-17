@@ -67,7 +67,6 @@
     }
   }
 
-  // ─── Card with image ───
   &__item {
     position: relative;
     overflow: hidden;
@@ -110,31 +109,6 @@
       height: 32px;
       border-color: v.$brand-primary-500;
     }
-
-    // ─── Text-only card (no image) ───
-    &--text {
-      background: v.$neutral-0;
-      display: flex;
-      flex-direction: column;
-      padding: v.$spacing-6;
-
-      .portfolio__badge {
-        position: relative;
-        top: auto;
-        left: auto;
-        width: fit-content;
-        margin-bottom: v.$spacing-4;
-      }
-
-      .portfolio__item-title {
-        color: v.$color-text-primary;
-        font-size: v.$font-size-lg;
-      }
-
-      .portfolio__item-location {
-        color: v.$color-text-secondary;
-      }
-    }
   }
 
   &__image {
@@ -175,24 +149,10 @@
     border: 1px solid rgba(v.$brand-primary-500, 0.1);
   }
 
-  &__text-content {
-    display: flex;
-    flex-direction: column;
-    gap: v.$spacing-3;
-    flex: 1;
-    justify-content: center;
-  }
-
   &__item-title {
     font-size: v.$font-size-xl;
     font-weight: v.$font-weight-bold;
     color: v.$neutral-0;
-  }
-
-  &__item-description {
-    font-size: v.$font-size-sm;
-    color: v.$color-text-secondary;
-    line-height: v.$line-height-relaxed;
   }
 
   &__item-location {
