@@ -96,6 +96,12 @@
     flex-shrink: 0;
   }
 
+  &__item-values {
+    display: flex;
+    flex-direction: column;
+    gap: v.$spacing-1;
+  }
+
   &__item-value {
     font-size: v.$font-size-lg;
     font-weight: v.$font-weight-semibold;

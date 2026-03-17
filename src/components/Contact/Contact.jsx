@@ -6,7 +6,7 @@ import { SOCIAL_LINKS, ICON_MAP } from "../../data/siteData";
 import "./Contact.scss";
 
 const CONTACT_ITEMS = [
-  { icon: Phone, labelKey: "contact.phone", type: "phone" },
+  { icon: Phone, labelKey: "contact.phones", type: "phones" },
   { icon: Mail, labelKey: "contact.email", type: "email" },
   { icon: MapPin, labelKey: "contact.address", type: "address" },
 ];
@@ -79,12 +79,21 @@ const Contact = () => {
             <div className="contact__items">
               {CONTACT_ITEMS.map((item) => {
                 const Icon = item.icon;
+                const value = t(item.labelKey);
                 return (
                   <div key={item.type} className="contact__item">
                     <div className="contact__item-icon">
                       <Icon size={20} />
                     </div>
-                    <span className="contact__item-value">{t(item.labelKey)}</span>
+                    <div className="contact__item-values">
+                      {Array.isArray(value) ? (
+                        value.map((v) => (
+                          <span key={v} className="contact__item-value">{v}</span>
+                        ))
+                      ) : (
+                        <span className="contact__item-value">{value}</span>
+                      )}
+                    </div>
                   </div>
                 );
               })}

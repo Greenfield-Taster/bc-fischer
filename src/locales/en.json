@@ -93,9 +93,9 @@
   "contact": {
     "title": "Contact",
     "subtitle": "Have a project or question? Our team of professionals is ready to help you implement your ideas.",
-    "email": "info@bcfisher.ua",
-    "phone": "+38 (044) 123-45-67",
-    "address": "Kyiv, Khreshchatyk St., 1",
+    "email": "office@fischer.in.ua",
+    "phones": ["+38 (044) 228-05-50", "+38 (094) 828-80-50"],
+    "address": "Kyiv, Avtozavodska St., 54/19A, office complex \"Symbol\", 2nd floor",
     "formTitle": "Send a request",
     "formName": "Your name",
     "formPhone": "Phone",
@@ -105,7 +105,7 @@
     "subjects": ["Residential construction", "Commercial facilities", "Industrial facilities", "Other"]
   },
   "footer": {
-    "description": "Professional construction and architectural design since 2010.",
+    "description": "Professional construction and architectural design since 2012.",
     "navigation": "Navigation",
     "contacts": "Contacts",
     "rights": "All rights reserved"

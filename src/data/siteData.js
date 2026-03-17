@@ -23,7 +23,7 @@ export const CONTACT_ITEMS = [
   { icon: MapPin, labelKey: "contact.address", type: "address" },
 ];
 
-export const SITE_NAME = "BC Fisher";
+export const SITE_NAME = "BC Fischer";
 
 export const PORTFOLIO_IMAGES = [
   "https://lh3.googleusercontent.com/aida-public/AB6AXuCvaBtJ_V-waror1ZHySLZ-62uyXxL00XxRm82QVb5010n4t4qEEadiy3YI76S0GFjwTohe7rTHV2kLZSW-Bn8osUu9rfdI4WMCtTijZuqZrU9DWK95mcqvl9vNzoCKBkGTc_ZyAMW_F4Ko8J9zVh2POCY2TRmWsJ6e9bHvzEAkgP2Mc0m-_aYdYDo9trOnoOIoZb_9B_U7nQ9Ihpk_t_axKwXhghhMjoa8qgC2QhyoakF-HPQ8l4yF9opNqbgzon7NDtvHd_68hHU",
