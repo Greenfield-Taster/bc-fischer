@@ -10,6 +10,7 @@ const INITIAL_COUNT = 6;
 
 // Indices of featured (2x2) items within each "page"
 const FEATURED_INDICES = [0, 6, 12];
+const FEATURED_RIGHT_INDICES = [6];
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -62,11 +63,12 @@ const Portfolio = () => {
               const globalIndex = Array.isArray(items) ? items.indexOf(item) : index;
               const imageIndex = globalIndex % PORTFOLIO_IMAGES.length;
               const isFeatured = FEATURED_INDICES.includes(globalIndex);
+              const isFeaturedRight = FEATURED_RIGHT_INDICES.includes(globalIndex);
 
               return (
                 <motion.div
                   key={`${item.title}-${item.location}`}
-                  className={`portfolio__item${isFeatured ? " portfolio__item--featured" : ""}`}
+                  className={`portfolio__item${isFeatured ? " portfolio__item--featured" : ""}${isFeaturedRight ? " portfolio__item--featured-right" : ""}`}
                   custom={index}
                   variants={cardVariants}
                   initial="hidden"

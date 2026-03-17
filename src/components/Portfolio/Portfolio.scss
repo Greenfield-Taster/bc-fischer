@@ -85,6 +85,18 @@
       }
     }
 
+    &--featured-right {
+      grid-column: 2 / span 2;
+
+      @media (max-width: v.$breakpoint-lg) {
+        grid-column: span 2;
+      }
+
+      @media (max-width: v.$breakpoint-sm) {
+        grid-column: span 1;
+      }
+    }
+
     &:hover .portfolio__image {
       transform: scale(1.05);
     }
