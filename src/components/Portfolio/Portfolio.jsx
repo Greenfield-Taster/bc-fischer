@@ -9,7 +9,7 @@ import "./Portfolio.scss";
 const INITIAL_COUNT = 6;
 
 // Indices of featured (2x2) items within each "page"
-const FEATURED_INDICES = [0, 7, 11];
+const FEATURED_INDICES = [0, 6, 12];
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30 },
