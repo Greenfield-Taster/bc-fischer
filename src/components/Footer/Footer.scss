@@ -83,9 +83,12 @@
     grid-template-columns: 1fr auto;
     gap: v.$spacing-16;
 
+    @media (max-width: v.$breakpoint-lg) {
+      gap: v.$spacing-10;
+    }
+
     @media (max-width: v.$breakpoint-md) {
       grid-template-columns: 1fr;
-      gap: v.$spacing-10;
     }
   }
 
@@ -154,6 +157,10 @@
     display: flex;
     gap: v.$spacing-16;
 
+    @media (max-width: v.$breakpoint-lg) {
+      gap: v.$spacing-10;
+    }
+
     @media (max-width: v.$breakpoint-md) {
       flex-direction: column;
       align-items: center;
@@ -166,9 +173,17 @@
     flex-direction: column;
     gap: v.$spacing-5;
 
+    &:last-child {
+      max-width: 320px;
+    }
+
     @media (max-width: v.$breakpoint-md) {
       align-items: center;
       text-align: center;
+
+      &:last-child {
+        max-width: none;
+      }
     }
   }
 
