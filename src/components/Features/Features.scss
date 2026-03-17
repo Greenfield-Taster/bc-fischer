@@ -68,8 +68,8 @@
   }
 
   &__card {
-    background: rgba(v.$neutral-0, 0.8);
-    border: 1px solid rgba(v.$brand-primary-500, 0.1);
+    background: v.$neutral-50;
+    border: 1px solid rgba(v.$brand-primary-500, 0.15);
     border-radius: v.$radius-card;
     padding: v.$spacing-6;
     display: flex;
@@ -77,6 +77,7 @@
     gap: v.$spacing-3;
     transition: v.$transition-card;
     position: relative;
+    box-shadow: v.$shadow-sm;
 
     // Corner accent top-left
     &::before {
