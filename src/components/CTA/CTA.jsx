@@ -11,6 +11,16 @@ const CTA = () => {
 
   return (
     <section className="cta">
+      <div className="cta__grid-bg" aria-hidden="true" />
+
+      <div className="cta__accents" aria-hidden="true">
+        <div className="cta__accent cta__accent--circle" />
+        <div className="cta__accent cta__accent--corner cta__accent--corner-tl" />
+        <div className="cta__accent cta__accent--corner cta__accent--corner-br" />
+        <div className="cta__accent cta__accent--dot cta__accent--dot-1" />
+        <div className="cta__accent cta__accent--dot cta__accent--dot-2" />
+      </div>
+
       <div className="cta__container container">
         <AnimatedSection>
           <h2 className="cta__title">{t("cta.title")}</h2>

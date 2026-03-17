@@ -1,10 +1,111 @@
 @use "../../styles/variables" as v;
 
 .cta {
-  background: v.$brand-primary-500;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, v.$brand-primary-700 0%, v.$brand-primary-500 50%, v.$brand-primary-600 100%);
   color: v.$neutral-0;
 
+  // ─── Blueprint grid ───
+  &__grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  // ─── Geometric accents ───
+  &__accents {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &__accent {
+    position: absolute;
+
+    &--circle {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 1px dashed rgba(255, 255, 255, 0.1);
+      top: -80px;
+      right: -60px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 50px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+    }
+
+    &--corner {
+      width: 48px;
+      height: 48px;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        background: rgba(255, 255, 255, 0.15);
+      }
+    }
+
+    &--corner-tl {
+      top: 15%;
+      left: 8%;
+
+      &::before {
+        top: 0;
+        left: 0;
+        width: 48px;
+        height: 2px;
+      }
+      &::after {
+        top: 0;
+        left: 0;
+        width: 2px;
+        height: 48px;
+      }
+    }
+
+    &--corner-br {
+      bottom: 15%;
+      right: 8%;
+
+      &::before {
+        bottom: 0;
+        right: 0;
+        width: 48px;
+        height: 2px;
+      }
+      &::after {
+        bottom: 0;
+        right: 0;
+        width: 2px;
+        height: 48px;
+      }
+    }
+
+    &--dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+
+      &-1 { top: 30%; left: 15%; }
+      &-2 { bottom: 25%; right: 20%; }
+    }
+  }
+
   &__container {
+    position: relative;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -45,33 +146,34 @@
     font-weight: v.$font-weight-bold;
     font-family: v.$font-family-base;
     cursor: pointer;
-    transition: v.$transition-button;
+    transition: all v.$transition-base v.$transition-timing;
 
     &--primary {
       background: v.$neutral-0;
       color: v.$brand-primary-500;
-      border: none;
+      border: 2px solid v.$neutral-0;
 
       &:hover {
         background: rgba(255, 255, 255, 0.9);
         transform: translateY(-2px);
-        box-shadow: v.$shadow-md;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
       }
     }
 
     &--secondary {
       background: transparent;
       color: v.$neutral-0;
-      border: 2px solid v.$neutral-0;
+      border: 2px solid rgba(255, 255, 255, 0.4);
 
       &:hover {
         background: rgba(255, 255, 255, 0.1);
+        border-color: v.$neutral-0;
         transform: translateY(-2px);
       }
     }
 
     &:active {
-      transform: scale(0.98);
+      transform: translateY(0);
     }
   }
 }
