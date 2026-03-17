@@ -59,14 +59,26 @@
   },
   "portfolio": {
     "title": "Completed projects",
-    "subtitle": "Over 50 projects completed in recent years",
+    "subtitle": "Over 16 projects of various complexity completed over the years",
+    "showMore": "Show all projects",
+    "showLess": "Collapse",
     "items": [
-      { "title": "Pechersk Plaza RC", "category": "Residential", "location": "Kyiv, Pechersk district" },
-      { "title": "Vozdvizhenka RC", "category": "Residential", "location": "Kyiv, Podil" },
-      { "title": "STB TV Headquarter", "category": "Commercial", "location": "Media center & studios" },
-      { "title": "Business Center Alpha", "category": "Commercial", "location": "Kyiv, City center" },
-      { "title": "Modern Warehouse", "category": "Industrial", "location": "Logistics hub, Class A" },
-      { "title": "Luxury Villa Pine", "category": "Residential", "location": "Private project, Kozyn" }
+      { "title": "Pechersk Plaza RC", "category": "Residential", "location": "Kykvydze St., Kyiv", "description": "Construction and installation works, technological equipment installation" },
+      { "title": "Vozdvizhenka RC", "category": "Residential", "location": "Vozdvyzhenska St.", "description": "Construction and installation works" },
+      { "title": "STB TV Channel", "category": "Commercial", "location": "Kyiv", "description": "Construction and installation works, technological equipment installation" },
+      { "title": "Shopping complex reconstruction", "category": "Commercial", "location": "Vasyl Poryk Ave., 5", "description": "Reconstruction and expansion of shopping complex" },
+      { "title": "Boryspil Airport catering facility", "category": "Industrial", "location": "Boryspil International Airport", "description": "Construction and installation works, technological equipment installation" },
+      { "title": "Residential building", "category": "Residential", "location": "Vietrova St.", "description": "Facade installation works" },
+      { "title": "Residential building", "category": "Residential", "location": "Shcherbakova St., 39", "description": "Construction and installation works" },
+      { "title": "Residential building", "category": "Residential", "location": "Saksahanskoho St., 123", "description": "Facade installation works" },
+      { "title": "Residential building", "category": "Residential", "location": "Tupoleva St., 24", "description": "Facade installation works" },
+      { "title": "Residential building", "category": "Residential", "location": "Bliukhera St., 11-A", "description": "Construction and installation works" },
+      { "title": "Residential building", "category": "Residential", "location": "Turhenivska St., 57", "description": "Internal and external engineering networks installation" },
+      { "title": "Residential building", "category": "Residential", "location": "Tupolieva St., 16A", "description": "Internal and external engineering networks installation" },
+      { "title": "Residential building", "category": "Residential", "location": "Shcherbakova St., 66A", "description": "Construction and installation works" },
+      { "title": "Residential building", "category": "Residential", "location": "Sarativska St., 12/28", "description": "Construction and installation works" },
+      { "title": "Residential building", "category": "Residential", "location": "V. Pika St., 26", "description": "Construction and installation works" },
+      { "title": "Residential building", "category": "Residential", "location": "Bohomoltsia St., 5, Kyiv", "description": "Construction and installation works, technological equipment installation" }
     ]
   },
   "partners": {

@@ -53,20 +53,21 @@
   &__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 300px;
+    grid-auto-rows: 280px;
     gap: v.$spacing-6;
 
     @media (max-width: v.$breakpoint-lg) {
       grid-template-columns: repeat(2, 1fr);
-      grid-auto-rows: 260px;
+      grid-auto-rows: 240px;
     }
 
     @media (max-width: v.$breakpoint-sm) {
       grid-template-columns: 1fr;
-      grid-auto-rows: 280px;
+      grid-auto-rows: 260px;
     }
   }
 
+  // ─── Card with image ───
   &__item {
     position: relative;
     overflow: hidden;
@@ -74,6 +75,16 @@
     cursor: pointer;
     border: 1px solid rgba(v.$brand-primary-500, 0.12);
     box-shadow: v.$shadow-sm;
+
+    &--featured {
+      grid-column: span 2;
+      grid-row: span 2;
+
+      @media (max-width: v.$breakpoint-sm) {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+    }
 
     &:hover .portfolio__image {
       transform: scale(1.05);
@@ -98,6 +109,31 @@
       width: 32px;
       height: 32px;
       border-color: v.$brand-primary-500;
+    }
+
+    // ─── Text-only card (no image) ───
+    &--text {
+      background: v.$neutral-0;
+      display: flex;
+      flex-direction: column;
+      padding: v.$spacing-6;
+
+      .portfolio__badge {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: fit-content;
+        margin-bottom: v.$spacing-4;
+      }
+
+      .portfolio__item-title {
+        color: v.$color-text-primary;
+        font-size: v.$font-size-lg;
+      }
+
+      .portfolio__item-location {
+        color: v.$color-text-secondary;
+      }
     }
   }
 
@@ -139,13 +175,30 @@
     border: 1px solid rgba(v.$brand-primary-500, 0.1);
   }
 
+  &__text-content {
+    display: flex;
+    flex-direction: column;
+    gap: v.$spacing-3;
+    flex: 1;
+    justify-content: center;
+  }
+
   &__item-title {
     font-size: v.$font-size-xl;
     font-weight: v.$font-weight-bold;
     color: v.$neutral-0;
   }
 
+  &__item-description {
+    font-size: v.$font-size-sm;
+    color: v.$color-text-secondary;
+    line-height: v.$line-height-relaxed;
+  }
+
   &__item-location {
+    display: flex;
+    align-items: center;
+    gap: v.$spacing-1;
     font-size: v.$font-size-sm;
     color: rgba(255, 255, 255, 0.7);
     font-weight: v.$font-weight-medium;

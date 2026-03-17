@@ -1,12 +1,12 @@
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, MapPin } from "lucide-react";
 import AnimatedSection from "../AnimatedSection/AnimatedSection";
 import { useLanguage } from "../../contexts/language/useLanguage";
 import { PORTFOLIO_IMAGES } from "../../data/siteData";
 import "./Portfolio.scss";
 
-const INITIAL_COUNT = 3;
+const INITIAL_COUNT = 6;
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -55,30 +55,56 @@ const Portfolio = () => {
 
         <div className="portfolio__grid" ref={gridRef}>
           <AnimatePresence mode="popLayout">
-            {visibleItems.map((item, index) => (
-              <motion.div
-                key={item.title}
-                className="portfolio__item"
-                custom={index}
-                variants={cardVariants}
-                initial="hidden"
-                animate={gridInView ? "visible" : "hidden"}
-                exit="exit"
-                layout
-              >
-                <img
-                  className="portfolio__image"
-                  src={PORTFOLIO_IMAGES[items.indexOf(item)]}
-                  alt={item.title}
-                  loading="lazy"
-                />
-                <div className="portfolio__overlay">
-                  <span className="portfolio__badge">{item.category}</span>
-                  <h3 className="portfolio__item-title">{item.title}</h3>
-                  <span className="portfolio__item-location">{item.location}</span>
-                </div>
-              </motion.div>
-            ))}
+            {visibleItems.map((item, index) => {
+              const globalIndex = Array.isArray(items) ? items.indexOf(item) : index;
+              const hasImage = globalIndex < PORTFOLIO_IMAGES.length;
+
+              return (
+                <motion.div
+                  key={`${item.title}-${item.location}`}
+                  className={`portfolio__item${
+                    index === 0 ? " portfolio__item--featured" : ""
+                  }${!hasImage ? " portfolio__item--text" : ""}`}
+                  custom={index}
+                  variants={cardVariants}
+                  initial="hidden"
+                  animate={gridInView ? "visible" : "hidden"}
+                  exit="exit"
+                  layout
+                >
+                  {hasImage ? (
+                    <>
+                      <img
+                        className="portfolio__image"
+                        src={PORTFOLIO_IMAGES[globalIndex]}
+                        alt={item.title}
+                        loading="lazy"
+                      />
+                      <div className="portfolio__overlay">
+                        <span className="portfolio__badge">{item.category}</span>
+                        <h3 className="portfolio__item-title">{item.title}</h3>
+                        <span className="portfolio__item-location">
+                          <MapPin size={14} />
+                          {item.location}
+                        </span>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <span className="portfolio__badge">{item.category}</span>
+                      <div className="portfolio__text-content">
+                        <h3 className="portfolio__item-title">{item.title}</h3>
+                        <p className="portfolio__item-description">{item.description}</p>
+                        <span className="portfolio__item-location">
+                          <MapPin size={14} />
+                          {item.location}
+                        </span>
+                      </div>
+                    </>
+                  )}
+                </motion.div>
+              );
+            })}
           </AnimatePresence>
         </div>
 
@@ -91,12 +117,12 @@ const Portfolio = () => {
             >
               {expanded ? (
                 <>
-                  Згорнути
+                  {t("portfolio.showLess")}
                   <ChevronUp size={20} />
                 </>
               ) : (
                 <>
-                  Показати всі проекти
+                  {t("portfolio.showMore")}
                   <ChevronDown size={20} />
                 </>
               )}
