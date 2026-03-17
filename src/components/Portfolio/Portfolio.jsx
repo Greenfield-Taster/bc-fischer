@@ -1,9 +1,12 @@
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import AnimatedSection from "../AnimatedSection/AnimatedSection";
 import { useLanguage } from "../../contexts/language/useLanguage";
 import { PORTFOLIO_IMAGES } from "../../data/siteData";
 import "./Portfolio.scss";
+
+const INITIAL_COUNT = 3;
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -16,13 +19,27 @@ const cardVariants = {
       ease: [0.25, 0.46, 0.45, 0.94],
     },
   }),
+  exit: {
+    opacity: 0,
+    y: -20,
+    transition: { duration: 0.25 },
+  },
 };
 
 const Portfolio = () => {
   const { t } = useLanguage();
   const items = t("portfolio.items");
+  const [expanded, setExpanded] = useState(false);
   const gridRef = useRef(null);
   const gridInView = useInView(gridRef, { once: true, margin: "-80px" });
+
+  const visibleItems = Array.isArray(items)
+    ? expanded
+      ? items
+      : items.slice(0, INITIAL_COUNT)
+    : [];
+
+  const hasMore = Array.isArray(items) && items.length > INITIAL_COUNT;
 
   return (
     <section id="portfolio" className="portfolio">
@@ -37,19 +54,21 @@ const Portfolio = () => {
         </AnimatedSection>
 
         <div className="portfolio__grid" ref={gridRef}>
-          {Array.isArray(items) &&
-            items.map((item, index) => (
+          <AnimatePresence mode="popLayout">
+            {visibleItems.map((item, index) => (
               <motion.div
-                key={index}
-                className={`portfolio__item${index === 0 ? " portfolio__item--featured" : ""}`}
+                key={item.title}
+                className="portfolio__item"
                 custom={index}
                 variants={cardVariants}
                 initial="hidden"
                 animate={gridInView ? "visible" : "hidden"}
+                exit="exit"
+                layout
               >
                 <img
                   className="portfolio__image"
-                  src={PORTFOLIO_IMAGES[index]}
+                  src={PORTFOLIO_IMAGES[items.indexOf(item)]}
                   alt={item.title}
                   loading="lazy"
                 />
@@ -60,7 +79,30 @@ const Portfolio = () => {
                 </div>
               </motion.div>
             ))}
+          </AnimatePresence>
         </div>
+
+        {hasMore && (
+          <AnimatedSection className="portfolio__toggle-wrapper">
+            <button
+              className="portfolio__toggle"
+              type="button"
+              onClick={() => setExpanded((prev) => !prev)}
+            >
+              {expanded ? (
+                <>
+                  Згорнути
+                  <ChevronUp size={20} />
+                </>
+              ) : (
+                <>
+                  Показати всі проекти
+                  <ChevronDown size={20} />
+                </>
+              )}
+            </button>
+          </AnimatedSection>
+        )}
       </div>
     </section>
   );
