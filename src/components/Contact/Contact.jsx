@@ -15,11 +15,15 @@ const Contact = () => {
 
   return (
     <section id="contact" className="contact">
+      <div className="contact__grid-bg" aria-hidden="true" />
+
       <div className="contact__container container">
         <div className="contact__grid">
           <AnimatedSection className="contact__info" direction="left">
-            <h2 className="contact__title">{t("contact.title")}</h2>
-            <p className="contact__subtitle">{t("contact.subtitle")}</p>
+            <div className="contact__info-header">
+              <span className="contact__label">{t("contact.title")}</span>
+              <p className="contact__subtitle">{t("contact.subtitle")}</p>
+            </div>
 
             <div className="contact__items">
               {CONTACT_ITEMS.map((item) => {
@@ -27,7 +31,7 @@ const Contact = () => {
                 return (
                   <div key={item.type} className="contact__item">
                     <div className="contact__item-icon">
-                      <Icon size={24} />
+                      <Icon size={20} />
                     </div>
                     <span className="contact__item-value">{t(item.labelKey)}</span>
                   </div>

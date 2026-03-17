@@ -1,11 +1,26 @@
 @use "../../styles/variables" as v;
 
 .contact {
+  position: relative;
+  overflow: hidden;
   background: v.$neutral-0;
+  padding: v.$spacing-24 0;
+
+  // ─── Blueprint grid background ───
+  &__grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(v.$brand-primary-500, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(v.$brand-primary-500, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 50% 70% at 0% 50%, black 0%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 50% 70% at 0% 50%, black 0%, transparent 100%);
+  }
 
   &__container {
-    display: flex;
-    flex-direction: column;
+    position: relative;
+    z-index: 1;
   }
 
   &__grid {
@@ -25,16 +40,23 @@
     gap: v.$spacing-8;
   }
 
-  &__title {
-    font-size: v.$font-size-5xl;
-    font-weight: v.$font-weight-extrabold;
-    color: v.$color-text-primary;
-    letter-spacing: v.$letter-spacing-tight;
-    line-height: v.$line-height-tight;
+  &__info-header {
+    display: flex;
+    flex-direction: column;
+    gap: v.$spacing-4;
+  }
 
-    @media (max-width: v.$breakpoint-sm) {
-      font-size: v.$font-size-3xl;
-    }
+  &__label {
+    display: inline-block;
+    font-size: v.$font-size-sm;
+    font-weight: v.$font-weight-bold;
+    color: v.$brand-primary-500;
+    text-transform: uppercase;
+    letter-spacing: v.$letter-spacing-wider;
+    padding: v.$spacing-2 v.$spacing-4;
+    background: rgba(v.$brand-primary-500, 0.08);
+    border-radius: v.$radius-full;
+    width: fit-content;
   }
 
   &__subtitle {
@@ -54,15 +76,23 @@
     align-items: center;
     gap: v.$spacing-4;
     padding: v.$spacing-5 0;
-    border-top: 1px solid v.$color-border;
+    border-top: 1px dashed rgba(v.$brand-primary-500, 0.15);
 
     &:last-child {
-      border-bottom: 1px solid v.$color-border;
+      border-bottom: 1px dashed rgba(v.$brand-primary-500, 0.15);
     }
   }
 
   &__item-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: v.$radius-lg;
+    background: rgba(v.$brand-primary-500, 0.08);
     color: v.$brand-primary-500;
+    border: 1px dashed rgba(v.$brand-primary-500, 0.15);
     flex-shrink: 0;
   }
 
@@ -78,29 +108,50 @@
   }
 
   &__social-link {
-    width: 40px;
-    height: 40px;
-    border-radius: v.$radius-full;
-    background: v.$neutral-100;
+    width: 44px;
+    height: 44px;
+    border-radius: v.$radius-lg;
+    background: rgba(v.$brand-primary-500, 0.08);
+    border: 1px solid rgba(v.$brand-primary-500, 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: v.$color-text-secondary;
-    transition: v.$transition-button;
+    color: v.$brand-primary-500;
+    transition: all v.$transition-base v.$transition-timing;
     text-decoration: none;
 
     &:hover {
       background: v.$brand-primary-500;
+      border-color: v.$brand-primary-500;
       color: v.$neutral-0;
+      transform: translateY(-2px);
     }
   }
 
+  // ─── Form card ───
   &__form-wrapper {
     background: v.$neutral-0;
     padding: v.$spacing-10;
     border-radius: v.$radius-xl;
-    border: 1px solid v.$color-border;
-    box-shadow: v.$shadow-lg;
+    border: 1px solid rgba(v.$brand-primary-500, 0.12);
+    box-shadow:
+      0 20px 40px -12px rgba(v.$brand-primary-500, 0.1),
+      0 0 0 1px rgba(v.$brand-primary-500, 0.04);
+    position: relative;
+
+    // Corner accent
+    &::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      right: -1px;
+      width: 40px;
+      height: 40px;
+      border-top: 3px solid v.$brand-primary-500;
+      border-right: 3px solid v.$brand-primary-500;
+      border-radius: 0 v.$radius-xl 0 0;
+      pointer-events: none;
+    }
 
     @media (max-width: v.$breakpoint-sm) {
       padding: v.$spacing-6;
@@ -146,18 +197,19 @@
     width: 100%;
     height: 52px;
     padding: 0 v.$spacing-4;
-    border: 1px solid v.$color-border-dark;
+    border: 1px solid rgba(v.$brand-primary-500, 0.15);
     border-radius: v.$radius-input;
     background: v.$neutral-50;
     font-size: v.$font-size-base;
     color: v.$color-text-primary;
     font-family: v.$font-family-base;
-    transition: v.$transition-button;
+    transition: all v.$transition-base v.$transition-timing;
 
     &:focus {
       outline: none;
       border-color: v.$brand-primary-500;
-      box-shadow: 0 0 0 3px rgba(v.$brand-primary-500, 0.15);
+      box-shadow: 0 0 0 3px rgba(v.$brand-primary-500, 0.12);
+      background: v.$neutral-0;
     }
   }
 
@@ -181,22 +233,23 @@
     height: 52px;
     background: v.$brand-primary-500;
     color: v.$neutral-0;
-    border: none;
+    border: 2px solid v.$brand-primary-500;
     border-radius: v.$radius-button;
     font-size: v.$font-size-lg;
     font-weight: v.$font-weight-bold;
     font-family: v.$font-family-base;
     cursor: pointer;
-    transition: v.$transition-button;
-    box-shadow: 0 4px 12px rgba(v.$brand-primary-500, 0.2);
+    transition: all v.$transition-base v.$transition-timing;
 
     &:hover {
       background: v.$brand-primary-600;
-      transform: translateY(-1px);
+      border-color: v.$brand-primary-600;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(v.$brand-primary-500, 0.3);
     }
 
     &:active {
-      transform: scale(0.98);
+      transform: translateY(0);
     }
   }
 }
