@@ -1,6 +1,6 @@
 import { useLanguage } from "../../contexts/language/useLanguage";
 import { NAV_LINKS, SOCIAL_LINKS, SITE_NAME, ICON_MAP } from "../../data/siteData";
-import logoLight from "../../assets/logo-light.png";
+import logoDark from "../../assets/logo-dark.png";
 import "./Footer.scss";
 
 const Footer = () => {
@@ -14,6 +14,8 @@ const Footer = () => {
 
   return (
     <footer className="footer">
+      <div className="footer__grid-bg" aria-hidden="true" />
+
       <div className="footer__container container">
         <div className="footer__top">
           <div className="footer__brand">
@@ -25,7 +27,7 @@ const Footer = () => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
             >
-              <img src={logoLight} alt="BC Fischer" className="footer__logo-img" />
+              <img src={logoDark} alt="BC Fischer" className="footer__logo-img" />
             </a>
             <p className="footer__description">{t("footer.description")}</p>
           </div>
@@ -76,7 +78,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   aria-label={link.name}
                 >
-                  <Icon size={16} />
+                  <Icon size={18} />
                 </a>
               );
             })}

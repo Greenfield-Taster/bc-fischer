@@ -1,11 +1,28 @@
 @use "../../styles/variables" as v;
 
 .footer {
-  background: v.$neutral-900;
-  color: v.$neutral-0;
+  position: relative;
+  overflow: hidden;
+  background: v.$neutral-0;
+  color: v.$color-text-primary;
   padding: v.$spacing-16 0 v.$spacing-8;
+  border-top: 1px solid rgba(v.$brand-primary-500, 0.1);
+
+  // ─── Blueprint grid background ───
+  &__grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(v.$brand-primary-500, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(v.$brand-primary-500, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 60% 80% at 100% 100%, black 0%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 60% 80% at 100% 100%, black 0%, transparent 100%);
+  }
 
   &__container {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     gap: v.$spacing-10;
@@ -35,14 +52,14 @@
   }
 
   &__logo-img {
-    height: 36px;
+    height: 40px;
     width: auto;
     display: block;
   }
 
   &__description {
     font-size: v.$font-size-sm;
-    color: v.$neutral-400;
+    color: v.$color-text-secondary;
     line-height: v.$line-height-relaxed;
   }
 
@@ -67,7 +84,7 @@
     font-weight: v.$font-weight-bold;
     text-transform: uppercase;
     letter-spacing: v.$letter-spacing-wider;
-    color: v.$neutral-0;
+    color: v.$brand-primary-500;
   }
 
   &__nav {
@@ -78,13 +95,13 @@
 
   &__nav-link {
     font-size: v.$font-size-sm;
-    color: v.$neutral-400;
+    color: v.$color-text-secondary;
     text-decoration: none;
     font-weight: v.$font-weight-medium;
     transition: color v.$transition-fast v.$transition-timing;
 
     &:hover {
-      color: v.$brand-primary-400;
+      color: v.$brand-primary-500;
     }
   }
 
@@ -96,13 +113,18 @@
 
   &__contact-item {
     font-size: v.$font-size-sm;
-    color: v.$neutral-400;
+    color: v.$color-text-secondary;
     font-weight: v.$font-weight-medium;
   }
 
   &__separator {
     height: 1px;
-    background: rgba(255, 255, 255, 0.1);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(v.$brand-primary-500, 0.15),
+      transparent
+    );
   }
 
   &__bottom {
@@ -118,7 +140,7 @@
 
   &__copyright {
     font-size: v.$font-size-xs;
-    color: v.$neutral-500;
+    color: v.$color-text-tertiary;
   }
 
   &__socials {
@@ -127,18 +149,23 @@
   }
 
   &__social-link {
-    width: 32px;
-    height: 32px;
-    border-radius: v.$radius-full;
+    width: 36px;
+    height: 36px;
+    border-radius: v.$radius-lg;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: v.$neutral-400;
-    transition: v.$transition-button;
+    color: v.$color-text-secondary;
+    background: rgba(v.$brand-primary-500, 0.06);
+    border: 1px solid rgba(v.$brand-primary-500, 0.1);
+    transition: all v.$transition-base v.$transition-timing;
     text-decoration: none;
 
     &:hover {
+      background: v.$brand-primary-500;
+      border-color: v.$brand-primary-500;
       color: v.$neutral-0;
+      transform: translateY(-2px);
     }
   }
 }
