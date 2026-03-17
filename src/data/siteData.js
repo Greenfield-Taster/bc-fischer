@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Facebook, Linkedin } from "lucide-react";
+import { Facebook, Linkedin } from "lucide-react";
 
 export const ICON_MAP = {
   Facebook,
@@ -17,12 +17,6 @@ export const SOCIAL_LINKS = [
   { name: "LinkedIn", url: "https://linkedin.com/company/bcfisher" },
 ];
 
-export const CONTACT_ITEMS = [
-  { icon: Phone, labelKey: "contact.phone", type: "phone" },
-  { icon: Mail, labelKey: "contact.email", type: "email" },
-  { icon: MapPin, labelKey: "contact.address", type: "address" },
-];
-
 export const SITE_NAME = "BC Fischer";
 
 export const PORTFOLIO_IMAGES = [
@@ -33,9 +27,6 @@ export const PORTFOLIO_IMAGES = [
   "https://lh3.googleusercontent.com/aida-public/AB6AXuDT06b7AbOYpkbqCeTFwEyqWZpR-rgqNCKt7umTE3TIz08FW6gKPH7Uos_oz496wUt2ZmUMxhYuwOgyDi7FtHKvvjzNE7e4JQOb5t1SWyQo-e2RR5_v6AuOWkNZgfrT01dEa6eHF8nGy9Y9AprxcgCS9PqJT4sKaE68zf0ii529lLJj6LwMoQM8Q8a3-gXueeybpnVGLEUw2CF1_mPAVyWmjqQYAmYRzFeHMJW1iLHoWHVSYbXbtnQLxaKgil7A_sMvdwDYPBIxhqI",
   "https://lh3.googleusercontent.com/aida-public/AB6AXuCKPVKY9nZCVxJpX4X6ugIP4izo3r-VdI_0SL0sSsMsV9knVYm5bpI0IBHJiidsxaLHD9dR-ghIgFIG6OZqmsqjzhDufODaPi6XwdmAq_0UcrJfYz0wtJK5X4S99SUc876lkTfwDFbVwIRFGlykLm-6g0H5Ka9O3ysbA5b5GYeEaTH41ct1HxoDv9tMRoppkGh_rAit8abf9n-DNu0VN2tdBnZNDMlxKd7pkbrdUSGzi9KacKG4vygnasSs-9I3UBd1z-a3UmrIEH0",
 ];
-
-export const HERO_IMAGE =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuAsMGMSqY1-nyUVajuUoX__mkUB3QvRMAEcP7Zla5_8gP3S4XQinmV99WTNzYO3a_QTon1dTc-n2Qv_4cSqcX-kg-JqsJ0zxh6ixrngNudjL_4fTS6wF5tHq_r_wZrfHLXwgLQDl-OVUzSUUU0ukdPng5X_R6r7hGzNc2Ko6VT9q_NRFyd-d7iXlklwUmZJybIAod_ZgSsoj0fxqu5d0ADZE01pciPfJgB6gxlnza4PEO6G8XZ9EUbCM5e9fc43G5xaBkSp5WYoE8A";
 
 export const TEAM_IMAGE =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuCcaAZqFu-xs36ANSM-Ct9eyRsHuHZ_quHBXQNQMhIEyO_K2pt0yVMQ6xSQq3v5MOmBgnu9wP8JcRBjHptLSoc7EmVPFaVOK696gqhf0fNuehHFRxy96hNNVmvVIkjyWQT5CjPN4iUX1qd0JLtXLLnAFvrB1UVqdOqW8ySamFtAf7j30CzxckuPD1lH4WDmO1rl18nXsS7LuPieb2ItvQ9WSfBpR1k0HpK7joZgKiw84__C9w59hcFXoaxqJtn3_hfFnt_e0FUHMkk";

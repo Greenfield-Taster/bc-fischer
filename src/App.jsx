@@ -1,5 +1,4 @@
 import { LanguageProvider } from "./contexts";
-import GlowBackground from "./components/GlowBackground/GlowBackground";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
 import About from "./components/About/About";
@@ -15,7 +14,6 @@ function App() {
   return (
     <LanguageProvider>
       <div className="app">
-        <GlowBackground />
         <Header />
         <main>
           <Hero />

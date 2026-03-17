@@ -3,7 +3,6 @@
     "about": "About",
     "features": "Services",
     "portfolio": "Projects",
-    "partners": "Partners",
     "contact": "Contact"
   },
   "hero": {
@@ -80,9 +79,6 @@
       { "title": "Residential building", "category": "Residential", "location": "V. Pika St., 26", "description": "Construction and installation works" },
       { "title": "Residential building", "category": "Residential", "location": "Bohomoltsia St., 5, Kyiv", "description": "Construction and installation works, technological equipment installation" }
     ]
-  },
-  "partners": {
-    "title": "Our partners"
   },
   "cta": {
     "title": "Ready to start a project?",
