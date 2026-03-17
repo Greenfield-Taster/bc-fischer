@@ -8,10 +8,12 @@ const Features = () => {
 
   return (
     <section id="features" className="features">
+      <div className="features__grid-bg" aria-hidden="true" />
+
       <div className="features__container container">
         <AnimatedSection>
           <div className="features__header">
-            <h2 className="features__title">{t("features.title")}</h2>
+            <span className="features__label">{t("features.title")}</span>
             <p className="features__subtitle">{t("features.subtitle")}</p>
           </div>
         </AnimatedSection>

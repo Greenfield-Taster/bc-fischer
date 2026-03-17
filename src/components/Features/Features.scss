@@ -1,9 +1,26 @@
 @use "../../styles/variables" as v;
 
 .features {
+  position: relative;
+  overflow: hidden;
   background: v.$neutral-0;
+  padding: v.$spacing-24 0;
+
+  // ─── Blueprint grid background ───
+  &__grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(v.$brand-primary-500, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(v.$brand-primary-500, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 60% 80% at 50% 0%, black 0%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 60% 80% at 50% 0%, black 0%, transparent 100%);
+  }
 
   &__container {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     gap: v.$spacing-12;
@@ -13,16 +30,17 @@
     max-width: 640px;
   }
 
-  &__title {
-    font-size: v.$font-size-4xl;
+  &__label {
+    display: inline-block;
+    font-size: v.$font-size-sm;
     font-weight: v.$font-weight-bold;
-    color: v.$color-text-primary;
-    letter-spacing: v.$letter-spacing-tight;
-    margin-bottom: v.$spacing-3;
-
-    @media (max-width: v.$breakpoint-sm) {
-      font-size: v.$font-size-3xl;
-    }
+    color: v.$brand-primary-500;
+    text-transform: uppercase;
+    letter-spacing: v.$letter-spacing-wider;
+    padding: v.$spacing-2 v.$spacing-4;
+    background: rgba(v.$brand-primary-500, 0.08);
+    border-radius: v.$radius-full;
+    margin-bottom: v.$spacing-4;
   }
 
   &__subtitle {
@@ -50,19 +68,42 @@
   }
 
   &__card {
-    background: v.$neutral-50;
-    border: 1px solid v.$color-border;
+    background: rgba(v.$neutral-0, 0.8);
+    border: 1px solid rgba(v.$brand-primary-500, 0.1);
     border-radius: v.$radius-card;
     padding: v.$spacing-6;
     display: flex;
     flex-direction: column;
     gap: v.$spacing-3;
     transition: v.$transition-card;
+    position: relative;
+
+    // Corner accent top-left
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border-top: 2px solid rgba(v.$brand-primary-500, 0.2);
+      border-left: 2px solid rgba(v.$brand-primary-500, 0.2);
+      border-radius: v.$radius-card 0 0 0;
+      transition: all v.$transition-base v.$transition-timing;
+    }
 
     &:hover {
       border-color: v.$brand-primary-400;
-      box-shadow: v.$shadow-card-hover;
+      box-shadow:
+        0 8px 24px -8px rgba(v.$brand-primary-500, 0.15),
+        0 0 0 1px rgba(v.$brand-primary-500, 0.05);
       transform: translateY(-4px);
+
+      &::before {
+        width: 28px;
+        height: 28px;
+        border-color: v.$brand-primary-500;
+      }
     }
   }
 
@@ -73,13 +114,10 @@
     align-items: center;
     justify-content: center;
     border-radius: v.$radius-lg;
-    background: rgba(v.$brand-primary-500, 0.1);
+    background: rgba(v.$brand-primary-500, 0.08);
     color: v.$brand-primary-500;
     flex-shrink: 0;
-  }
-
-  &__icon {
-    font-size: 24px;
+    border: 1px dashed rgba(v.$brand-primary-500, 0.15);
   }
 
   &__card-title {
