@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { ChevronDown, ChevronUp, MapPin } from "lucide-react";
 import AnimatedSection from "../AnimatedSection/AnimatedSection";
 import { useLanguage } from "../../contexts/language/useLanguage";
@@ -23,11 +23,6 @@ const cardVariants = {
       ease: [0.25, 0.46, 0.45, 0.94],
     },
   }),
-  exit: {
-    opacity: 0,
-    y: -20,
-    transition: { duration: 0.25 },
-  },
 };
 
 const Portfolio = () => {
@@ -59,42 +54,38 @@ const Portfolio = () => {
         </AnimatedSection>
 
         <div className="portfolio__grid" ref={gridRef}>
-          <AnimatePresence mode="popLayout">
-            {visibleItems.map((item, index) => {
-              const globalIndex = Array.isArray(items) ? items.indexOf(item) : index;
-              const imageIndex = globalIndex % PORTFOLIO_IMAGES.length;
-              const isFeatured = FEATURED_INDICES.includes(globalIndex);
-              const isFeaturedRight = FEATURED_RIGHT_INDICES.includes(globalIndex);
+          {visibleItems.map((item, index) => {
+            const globalIndex = Array.isArray(items) ? items.indexOf(item) : index;
+            const imageIndex = globalIndex % PORTFOLIO_IMAGES.length;
+            const isFeatured = FEATURED_INDICES.includes(globalIndex);
+            const isFeaturedRight = FEATURED_RIGHT_INDICES.includes(globalIndex);
 
-              return (
-                <motion.div
-                  key={`${item.title}-${item.location}`}
-                  className={`portfolio__item${isFeatured ? " portfolio__item--featured" : ""}${isFeaturedRight ? " portfolio__item--featured-right" : ""}`}
-                  custom={index}
-                  variants={cardVariants}
-                  initial="hidden"
-                  animate={gridInView ? "visible" : "hidden"}
-                  exit="exit"
-                  layout
-                >
-                  <img
-                    className="portfolio__image"
-                    src={PORTFOLIO_IMAGES[imageIndex]}
-                    alt={item.title}
-                    loading="lazy"
-                  />
-                  <div className="portfolio__overlay">
-                    <span className="portfolio__badge">{item.category}</span>
-                    <h3 className="portfolio__item-title">{item.title}</h3>
-                    <span className="portfolio__item-location">
-                      <MapPin size={14} />
-                      {item.location}
-                    </span>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
+            return (
+              <motion.div
+                key={`${item.title}-${item.location}`}
+                className={`portfolio__item${isFeatured ? " portfolio__item--featured" : ""}${isFeaturedRight ? " portfolio__item--featured-right" : ""}`}
+                custom={index}
+                variants={cardVariants}
+                initial="hidden"
+                animate={gridInView ? "visible" : "hidden"}
+              >
+                <img
+                  className="portfolio__image"
+                  src={PORTFOLIO_IMAGES[imageIndex]}
+                  alt={item.title}
+                  loading="lazy"
+                />
+                <div className="portfolio__overlay">
+                  <span className="portfolio__badge">{item.category}</span>
+                  <h3 className="portfolio__item-title">{item.title}</h3>
+                  <span className="portfolio__item-location">
+                    <MapPin size={14} />
+                    {item.location}
+                  </span>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         {hasMore && (
